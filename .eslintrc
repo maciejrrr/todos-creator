@@ -1,0 +1,12 @@
+ {
+   "extends": "react-app",
+   "globals": {
+      "fixture": true,
+      "renderer": true,
+      "shallow": true,
+      "mount": true,
+    },
+    rules: {
+      "react/react-in-jsx-scope": 0,
+    }
+ }

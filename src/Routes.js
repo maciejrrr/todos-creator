@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import TodoList from './containers/TodoList';
+import TodoLists from './containers/TodoLists';
 
 export default () => (
   <Switch>
-    <Route exact path="/" component={TodoList} />
+    <Route exact path="/" component={TodoLists} />
   </Switch>
 );
