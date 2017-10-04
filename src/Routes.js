@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import TodoList from '../containers/TodoList';
+import TodoList from './containers/TodoList';
 
 export default () => (
   <Switch>
