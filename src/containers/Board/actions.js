@@ -1,11 +1,6 @@
-import * as constants from './constants';
+import { ADD_CARD } from './constants';
 
 export const addCard = ({ card }) => ({
-  type: constants.ADD_CARD,
+  type: ADD_CARD,
   card,
-});
-
-export const addTask = ({ task }) => ({
-  type: constants.ADD_TASK,
-  task,
 });

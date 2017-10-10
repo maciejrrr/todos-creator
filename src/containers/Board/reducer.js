@@ -1,6 +1,7 @@
-import * as constants from './constants';
+import { ADD_CARD } from './constants';
+import { ADD_TASK } from '../Card/constants';
 
-export const initialState = {
+const initialState = {
   cards: [],
   tasks: [],
 };
@@ -17,9 +18,9 @@ const setAddTaskState = (state, action) => ({
 
 const boardsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case constants.ADD_CARD:
+    case ADD_CARD:
       return setAddCardState(state, action);
-    case constants.ADD_TASK:
+    case ADD_TASK:
       return setAddTaskState(state, action);
     default:
       return state;

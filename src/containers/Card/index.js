@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import uniqueId from 'lodash/uniqueId';
 import { createStructuredSelector } from 'reselect';
 
-import { tasksSelector } from '../Board/selectors';
+import { cardTasksSelector } from './selectors';
+import { addTask } from './actions';
 import { metrics } from '../../theme';
-import { addTask } from '../Board/actions';
 
 const StyledCard = styled.div`
   margin: ${metrics.baseMargin}px;
@@ -42,6 +42,7 @@ class Card extends Component {
         <p>{this.props.card.name}</p>
         {this.renderTasks()}
         <input
+          autoFocus
           placeholder="Add task"
           onChange={e => this.setState({ name: e.target.value })}
           value={this.state.name}
@@ -53,7 +54,7 @@ class Card extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  tasks: tasksSelector,
+  tasks: cardTasksSelector,
 });
 
 const mapDispatchToprops = dispatch => ({
