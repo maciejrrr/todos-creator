@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import uniqueId from 'lodash/uniqueId';
 import styled, { css } from 'styled-components';
-import { Icon } from 'antd';
 
+import FormActions from '../FormActions';
 import { metrics, colors } from '../../theme';
 
 const Form = styled.form`
   padding: ${metrics.smallMargin}px;
+  width: 180px;
   border-radius: ${metrics.borderRadius}px;
   background-color: ${props =>
     props.focused ? colors.cardBackground : 'transparent'};
@@ -14,6 +15,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   background-color: ${colors.addCardBackground};
+  width: 100%;
   border: 0;
   outline-width: 0;
   height: ${metrics.inputHeight}px;
@@ -25,39 +27,11 @@ const Input = styled.input`
   ${props =>
     props.focused &&
     css`
-      color: ${colors.cardText};
+      color: ${colors.grayText};
       ::placeholder {
-        color: ${colors.cardText};
+        color: ${colors.grayText};
       }
     `};
-`;
-
-const Actions = styled.div`
-  margin-top: ${metrics.smallMargin}px;
-  display: flex;
-  align-items: center;
-`;
-
-const Submit = styled.button`
-  border: 0;
-  border-radius: ${metrics.borderRadius}px;
-  background-image: linear-gradient(${colors.gradient});
-  padding: ${metrics.smallMargin}px ${metrics.doubleMargin}px;
-  color: ${colors.white};
-  ${props =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-      background-image: none;
-      background-color: ${colors.white};
-      color: ${colors.cardText};
-    `};
-`;
-
-const Cancel = styled(Icon)`
-  cursor: pointer;
-  font-size: ${metrics.fontSize.xl}px;
-  margin-left: ${metrics.smallMargin}px;
 `;
 
 class AddCard extends Component {
@@ -75,6 +49,7 @@ class AddCard extends Component {
       },
     });
     this.handleResetForm();
+    this.input.blur();
   };
 
   handleChange = e => {
@@ -94,20 +69,19 @@ class AddCard extends Component {
     return (
       <Form focused={focused} onSubmit={this.handleSubmit}>
         <Input
+          innerRef={input => (this.input = input)}
           focused={focused}
-          placeholder="Add a card"
+          placeholder="Add a card..."
           onChange={this.handleChange}
           value={name}
           onFocus={this.handleFocus}
         />
-        {focused && (
-          <Actions>
-            <Submit htmlType="submit" disabled={!name}>
-              Add
-            </Submit>
-            <Cancel type="close" onClick={this.handleResetForm} />
-          </Actions>
-        )}
+        <FormActions
+          focused={focused}
+          disabled={!name}
+          text="Add"
+          resetForm={this.handleResetForm}
+        />
       </Form>
     );
   }

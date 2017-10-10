@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board component snapshots no cards renders AddCard component without any cards 1`] = `
+<div
+  className="sc-EHOje iiWQLE"
+>
+  <div
+    className="sc-bZQynM kzxiXY"
+  >
+    <form
+      className="sc-bxivhb ctFYVZ"
+      onSubmit={[Function]}
+    >
+      <input
+        className="sc-ifAKCX cMqBtW"
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Add a card..."
+        value=""
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Board component snapshots with cards renders AddCard component and cards 1`] = `
+<div
+  className="sc-EHOje iiWQLE"
+>
+  <div
+    className="sc-bZQynM kzxiXY"
+  >
+    <Card
+      card={
+        Object {
+          "id": 1,
+          "name": "first card",
+        }
+      }
+    />
+  </div>
+  <div
+    className="sc-bZQynM kzxiXY"
+  >
+    <Card
+      card={
+        Object {
+          "id": 2,
+          "name": "second card",
+        }
+      }
+    />
+  </div>
+  <div
+    className="sc-bZQynM kzxiXY"
+  >
+    <form
+      className="sc-bxivhb ctFYVZ"
+      onSubmit={[Function]}
+    >
+      <input
+        className="sc-ifAKCX cMqBtW"
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Add a card..."
+        value=""
+      />
+    </form>
+  </div>
+</div>
+`;

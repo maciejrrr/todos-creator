@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component snapshots no tasks renders AddTask component without any tasks 1`] = `
+<div
+  className="sc-dnqmqq mseXG"
+>
+  <div
+    className="sc-iwsKbI kSpZQy"
+  >
+    <p
+      className="sc-gZMcBi fwEucS"
+    >
+      first card
+    </p>
+  </div>
+  <div
+    className="sc-bxivhb TDOcQ"
+  >
+    <a
+      className="sc-EHOje iCMDbo"
+      onClick={[Function]}
+    >
+      Add a task...
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Card component snapshots with tasks renders AddCard component and tasks 1`] = `
+<div
+  className="sc-dnqmqq mseXG"
+>
+  <div
+    className="sc-iwsKbI kSpZQy"
+  >
+    <p
+      className="sc-gZMcBi fwEucS"
+    >
+      first card
+    </p>
+    <div
+      className="sc-gzVnrw comcWq"
+    >
+      <p
+        className="sc-htoDjs kNRfwO"
+      >
+        first task
+      </p>
+    </div>
+    <div
+      className="sc-gzVnrw comcWq"
+    >
+      <p
+        className="sc-htoDjs kNRfwO"
+      >
+        second task
+      </p>
+    </div>
+  </div>
+  <div
+    className="sc-bxivhb TDOcQ"
+  >
+    <a
+      className="sc-EHOje iCMDbo"
+      onClick={[Function]}
+    >
+      Add a task...
+    </a>
+  </div>
+</div>
+`;

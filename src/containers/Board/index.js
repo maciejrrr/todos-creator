@@ -15,14 +15,18 @@ const CardsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const FormContainer = styled.div`
+const CardWrapper = styled.div`
   margin: ${metrics.baseMargin}px;
 `;
 
 export class Board extends Component {
   renderCards() {
     const { cards } = this.props;
-    return cards.map(card => <Card key={card.id} card={card} />);
+    return cards.map(card => (
+      <CardWrapper key={card.id}>
+        <Card card={card} />
+      </CardWrapper>
+    ));
   }
 
   render() {
@@ -30,9 +34,9 @@ export class Board extends Component {
     return (
       <CardsContainer>
         {this.renderCards()}
-        <FormContainer>
+        <CardWrapper>
           <AddCard addCard={addCard} />
-        </FormContainer>
+        </CardWrapper>
       </CardsContainer>
     );
   }
@@ -42,8 +46,8 @@ const mapStateToProps = createStructuredSelector({
   cards: cardsSelector,
 });
 
-const mapDispatchToprops = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addCard: ({ card }) => dispatch(addCard({ card })),
 });
 
-export default connect(mapStateToProps, mapDispatchToprops)(Board);
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

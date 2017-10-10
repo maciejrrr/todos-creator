@@ -4,6 +4,13 @@ import { ADD_TASK } from '../../Card/constants';
 import boardsReducer from '../reducer';
 
 describe('Board reducer', () => {
+  it('by default returns initialState', () => {
+    expect(boardsReducer(undefined, {})).toEqual({
+      cards: [],
+      tasks: [],
+    });
+  });
+
   it('handles ADD_CARD', () => {
     const card = { id: 1, name: 'test' };
     expect(boardsReducer({ cards: [] }, { type: ADD_CARD, card })).toEqual({
