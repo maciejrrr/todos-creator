@@ -45,6 +45,7 @@ describe('Board component', () => {
       addCard: jest.fn(),
       updateCardsTasks: jest.fn(),
       cardTaskIds: {},
+      boardId: 1,
     };
   });
 
@@ -58,8 +59,18 @@ describe('Board component', () => {
 
     describe('with cards', () => {
       it('renders AddCard component and cards', () => {
-        const cards = [{ id: 1, name: 'first card' }, { id: 2, name: 'second card' }];
+        const cards = [
+          { id: 1, name: 'first card', boardId: 1 },
+          { id: 2, name: 'second card', boardId: 1 },
+        ];
         const tree = renderer.create(<Board {...props} cards={cards} />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
+    });
+
+    describe('with no boardId', () => {
+      it('renders no board info', () => {
+        const tree = renderer.create(<Board {...props} boardId={null} />).toJSON();
         expect(tree).toMatchSnapshot();
       });
     });
@@ -99,17 +110,26 @@ describe('Board component', () => {
     });
   });
 
+  describe('handleAddNewCard', () => {
+    it('calls addCard', () => {
+      const item = { id: 1, name: 'test card' };
+      const component = shallow(<Board {...props} />);
+      component.instance().handleAddNewCard({ item });
+      expect(props.addCard).toHaveBeenCalledWith({ card: { ...item, boardId: props.boardId } });
+    });
+  });
+
   describe('mapDispatchToprops', () => {
     let dispatch;
     let result;
-
     beforeEach(() => {
       dispatch = jest.fn();
       result = mapDispatchToProps(dispatch);
     });
+
     describe('addCard', () => {
       it('dispatches addCard with card object', () => {
-        const card = { id: 1, name: 'test' };
+        const card = { id: 1, name: 'test', boardId: 1 };
         result.addCard({ card });
         expect(dispatch).toBeCalledWith(addCard({ card }));
       });

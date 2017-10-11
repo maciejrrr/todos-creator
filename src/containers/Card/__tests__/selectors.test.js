@@ -1,30 +1,39 @@
 import {
   cardIdSelector,
+  boardIdSelector,
   cardsStateSelector,
+  allCardsSelector,
   cardsSelector,
   allTasksSelector,
   allCardTaskIdsSelector,
   cardTaskIdsSelector,
   cardTasksSelector,
+  tasksForCardsInBoardSelector,
 } from '../selectors';
 
 describe('Card selectors', () => {
   let mockedState;
   let card1;
+  let card2;
   let task1;
   let task2;
+  let task3;
   let cardId;
   let cardTaskIds;
+  let boardId;
   beforeEach(() => {
     cardId = 1;
-    card1 = { id: cardId, name: 'card' };
+    boardId = 1;
+    card1 = { id: cardId, name: 'card', boardId };
+    card2 = { id: 2, name: 'card from second board', boardId: 2 };
     task1 = { id: 1, name: 'task' };
     task2 = { id: 2, name: 'second task' };
-    cardTaskIds = { [cardId]: [card1.id], 2: [task2.id] };
+    task3 = { id: 5, name: 'other board' };
+    cardTaskIds = { [cardId]: [card1.id], 2: [task2.id], 5: [task3.id] };
     mockedState = {
       cardsState: {
-        cards: [card1],
-        tasks: [task1, task2],
+        cards: [card1, card2],
+        tasks: [task1, task2, task3],
         cardTaskIds: cardTaskIds,
       },
     };
@@ -36,25 +45,46 @@ describe('Card selectors', () => {
     });
   });
 
-  describe('cardsSelector', () => {
-    it('returns cards array', () => {
-      expect(cardsSelector(mockedState)).toEqual([card1]);
-    });
-  });
-
-  describe('cardId required in props', () => {
+  describe('with props', () => {
     let props;
     beforeEach(() => {
       props = {
         card: {
           id: cardId,
         },
+        boardId,
       };
     });
 
     describe('cardIdSelector', () => {
       it('returns current card id', () => {
         expect(cardIdSelector(mockedState, props)).toEqual(cardId);
+      });
+    });
+
+    describe('boardIdSelector', () => {
+      it('returns current board id', () => {
+        expect(boardIdSelector(mockedState, props)).toEqual(boardId);
+      });
+    });
+
+    describe('allCardsSelector', () => {
+      it('returns all cards array', () => {
+        expect(allCardsSelector(mockedState)).toEqual([card1, card2]);
+      });
+    });
+
+    describe('cardsSelector', () => {
+      it('returns cards from board', () => {
+        expect(cardsSelector(mockedState, props)).toEqual([card1]);
+      });
+    });
+
+    describe('tasksForCardsInBoardSelector', () => {
+      it('returns cardTaskIds for cards in board', () => {
+        expect(tasksForCardsInBoardSelector(mockedState, props)).toEqual({
+          [cardId]: [card1.id],
+        });
       });
     });
 
@@ -82,7 +112,7 @@ describe('Card selectors', () => {
 
   describe('allTasksSelector', () => {
     it('returns all tasks', () => {
-      expect(allTasksSelector(mockedState)).toEqual([task1, task2]);
+      expect(allTasksSelector(mockedState)).toEqual([task1, task2, task3]);
     });
   });
 

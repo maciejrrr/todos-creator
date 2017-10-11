@@ -17,4 +17,5 @@ export const metrics = {
   tripleMargin: 30,
   inputHeight: 30,
   borderRadius: 3,
+  formWidth: 180,
 };

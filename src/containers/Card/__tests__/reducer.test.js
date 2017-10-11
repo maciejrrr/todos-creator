@@ -12,9 +12,8 @@ describe('Card reducer', () => {
   });
 
   it('handles ADD_CARD', () => {
-    const card = { id: 1, name: 'test' };
-    const cardId = 1;
-    expect(cardsReducer({ cards: [] }, { type: ADD_CARD, card, cardId })).toEqual({
+    const card = { id: 1, name: 'test', boardId: 1 };
+    expect(cardsReducer({ cards: [] }, { type: ADD_CARD, card })).toEqual({
       cards: [card],
     });
   });

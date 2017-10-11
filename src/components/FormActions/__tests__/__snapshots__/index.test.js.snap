@@ -2,7 +2,7 @@
 
 exports[`FormActions component snapshots renders form actions 1`] = `
 <div
-  className="sc-bdVaJa cItXoG"
+  className="sc-bdVaJa jIKszl"
 >
   <button
     className="sc-bwzfXH PLgtL"
@@ -19,7 +19,7 @@ exports[`FormActions component snapshots renders form actions 1`] = `
 
 exports[`FormActions component snapshots renders form actions with disable submit button 1`] = `
 <div
-  className="sc-bdVaJa cItXoG"
+  className="sc-bdVaJa jIKszl"
 >
   <button
     className="sc-bwzfXH hGZcQI"

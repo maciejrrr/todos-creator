@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewItemForm component snapshots focused state renders focused form 1`] = `
+<form
+  className="sc-bxivhb bdIKGc"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-ifAKCX cRsMfw"
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder={undefined}
+    value=""
+  />
+  <div
+    className="sc-bdVaJa jIKszl"
+  >
+    <button
+      className="sc-bwzfXH hGZcQI"
+      disabled={true}
+    >
+      Add
+    </button>
+    <i
+      className="anticon anticon-close sc-htpNat oPmsX"
+      onClick={[Function]}
+    />
+  </div>
+</form>
+`;
+
+exports[`NewItemForm component snapshots initial state renders without focused components 1`] = `
+<form
+  className="sc-bxivhb gAAXBk"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-ifAKCX cMqBtW"
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder={undefined}
+    value=""
+  />
+</form>
+`;
+
+exports[`NewItemForm component snapshots inline form renders inline form 1`] = `
+<form
+  className="sc-bxivhb fSZRgy"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-ifAKCX cRsMfw"
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder={undefined}
+    value=""
+  />
+  <div
+    className="sc-bdVaJa leeTYR"
+  >
+    <button
+      className="sc-bwzfXH hGZcQI"
+      disabled={true}
+    >
+      Add
+    </button>
+    <i
+      className="anticon anticon-close sc-htpNat oPmsX"
+      onClick={[Function]}
+    />
+  </div>
+</form>
+`;

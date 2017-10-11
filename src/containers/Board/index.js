@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { ItemTypes } from '../Card/constants';
 
-import AddCard from '../../components/AddCard';
+import NewItemForm from '../../components/NewItemForm';
 import Card from '../Card';
-import { cardsSelector, allCardTaskIdsSelector } from '../Card/selectors';
+import { cardsSelector, tasksForCardsInBoardSelector } from '../Card/selectors';
 import { addCard, updateCardsTasks } from '../Card/actions';
-import { metrics } from '../../theme';
+import { metrics, colors } from '../../theme';
 
 const CardsContainer = styled.div`
   display: flex;
@@ -19,6 +19,17 @@ const CardsContainer = styled.div`
 
 const CardWrapper = styled.div`
   margin: ${metrics.baseMargin}px;
+`;
+
+const NoBoardInfo = styled.div`
+  display: flex;
+  margin: ${metrics.doubleMargin}px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const H1 = styled.h1`
+  color: ${colors.white};
 `;
 
 export const reorderArray = ({ arr, startIndex, endIndex }) => {
@@ -68,6 +79,11 @@ export class Board extends Component {
     }
   };
 
+  handleAddNewCard = ({ item }) => {
+    const { boardId, addCard } = this.props;
+    addCard({ card: { ...item, boardId } });
+  };
+
   renderCards() {
     const { cards } = this.props;
     return cards.map(card => (
@@ -78,23 +94,31 @@ export class Board extends Component {
   }
 
   render() {
-    const { addCard } = this.props;
-    return (
-      <DragDropContext onDragEnd={this.handleDragEnd}>
-        <CardsContainer>
-          {this.renderCards()}
-          <CardWrapper>
-            <AddCard addCard={addCard} />
-          </CardWrapper>
-        </CardsContainer>
-      </DragDropContext>
+    const { boardId } = this.props;
+    let content = (
+      <NoBoardInfo>
+        <H1>No boards</H1>
+      </NoBoardInfo>
     );
+    if (boardId) {
+      content = (
+        <DragDropContext onDragEnd={this.handleDragEnd}>
+          <CardsContainer>
+            {this.renderCards()}
+            <CardWrapper>
+              <NewItemForm submit={this.handleAddNewCard} placeholder="Add a card" />
+            </CardWrapper>
+          </CardsContainer>
+        </DragDropContext>
+      );
+    }
+    return content;
   }
 }
 
 const mapStateToProps = createStructuredSelector({
   cards: cardsSelector,
-  cardTaskIds: allCardTaskIdsSelector,
+  cardTaskIds: tasksForCardsInBoardSelector,
 });
 
 export const mapDispatchToProps = dispatch => ({

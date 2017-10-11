@@ -25,7 +25,7 @@ exports[`AddTask component snapshots showForm state renders task form 1`] = `
     value=""
   />
   <div
-    className="sc-bdVaJa cItXoG"
+    className="sc-bdVaJa jIKszl"
   >
     <button
       className="sc-bwzfXH hGZcQI"

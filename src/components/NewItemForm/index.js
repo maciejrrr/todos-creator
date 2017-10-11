@@ -6,11 +6,18 @@ import FormActions from '../FormActions';
 import { metrics, colors } from '../../theme';
 
 const Form = styled.form`
-  padding: ${metrics.smallMargin}px;
-  width: 180px;
+  padding: ${props => (props.inline ? 0 : metrics.smallMargin)}px;
+  width: ${metrics.formWidth}px;
   border-radius: ${metrics.borderRadius}px;
-  background-color: ${props =>
-    props.focused ? colors.cardBackground : 'transparent'};
+  background-color: ${props => (props.focused ? colors.cardBackground : 'transparent')};
+  ${props =>
+    props.inline &&
+    css`
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      align-items: center;
+    `};
 `;
 
 const Input = styled.input`
@@ -34,7 +41,7 @@ const Input = styled.input`
     `};
 `;
 
-class AddCard extends Component {
+class NewItemForm extends Component {
   state = {
     name: '',
     focused: false,
@@ -42,8 +49,8 @@ class AddCard extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addCard({
-      card: {
+    this.props.submit({
+      item: {
         id: uniqueId(),
         name: this.state.name,
       },
@@ -66,17 +73,19 @@ class AddCard extends Component {
 
   render() {
     const { focused, name } = this.state;
+    const { inline, placeholder } = this.props;
     return (
-      <Form focused={focused} onSubmit={this.handleSubmit}>
+      <Form focused={focused} inline={inline} onSubmit={this.handleSubmit}>
         <Input
           innerRef={input => (this.input = input)}
           focused={focused}
-          placeholder="Add a card..."
+          placeholder={placeholder}
           onChange={this.handleChange}
           value={name}
           onFocus={this.handleFocus}
         />
         <FormActions
+          inline={inline}
           focused={focused}
           disabled={!name}
           text="Add"
@@ -87,4 +96,4 @@ class AddCard extends Component {
   }
 }
 
-export default AddCard;
+export default NewItemForm;

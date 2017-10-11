@@ -14,7 +14,7 @@ import { metrics, colors } from '../../theme';
 
 const StyledCard = styled.div`
   border-radius: ${metrics.borderRadius}px;
-  width: 180px;
+  width: ${metrics.formWidth}px;
   background-color: ${colors.cardBackground};
 `;
 

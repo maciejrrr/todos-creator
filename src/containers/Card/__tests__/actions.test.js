@@ -4,7 +4,7 @@ import { ADD_CARD, EDIT_CARD, ADD_TASK, UPDATE_CARDS_TASKS } from '../constants'
 describe('Card actions', () => {
   describe('addCard', () => {
     it('returns ADD_CARD type and card object', () => {
-      const card = { id: 1, name: 'test' };
+      const card = { id: 1, name: 'test', boardId: 1 };
       const expectedResult = {
         type: ADD_CARD,
         card,

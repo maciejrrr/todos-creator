@@ -5,7 +5,8 @@ import styled, { css } from 'styled-components';
 import { metrics, colors } from '../../theme';
 
 const ActionsContainer = styled.div`
-  margin-top: ${metrics.smallMargin}px;
+  margin-top: ${props => (props.inline ? 0 : metrics.smallMargin)}px;
+  margin-left: ${metrics.smallMargin}px;
   display: flex;
   align-items: center;
 `;
@@ -33,11 +34,11 @@ const CancelForm = styled(Icon)`
   color: ${colors.grayText};
 `;
 
-const FormActions = ({ focused, disabled, text, resetForm }) => {
+const FormActions = ({ focused, disabled, text, resetForm, inline }) => {
   let content = null;
   if (focused) {
     content = (
-      <ActionsContainer>
+      <ActionsContainer inline={inline}>
         <SubmitButton htmlType="submit" disabled={disabled}>
           {text}
         </SubmitButton>

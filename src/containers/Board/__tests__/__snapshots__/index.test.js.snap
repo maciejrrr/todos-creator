@@ -8,14 +8,14 @@ exports[`Board component snapshots no cards renders AddCard component without an
     className="sc-bZQynM kzxiXY"
   >
     <form
-      className="sc-bxivhb ctFYVZ"
+      className="sc-bxivhb gAAXBk"
       onSubmit={[Function]}
     >
       <input
         className="sc-ifAKCX cMqBtW"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Add a card..."
+        placeholder="Add a card"
         value=""
       />
     </form>
@@ -33,6 +33,7 @@ exports[`Board component snapshots with cards renders AddCard component and card
     <Card
       card={
         Object {
+          "boardId": 1,
           "id": 1,
           "name": "first card",
         }
@@ -45,6 +46,7 @@ exports[`Board component snapshots with cards renders AddCard component and card
     <Card
       card={
         Object {
+          "boardId": 1,
           "id": 2,
           "name": "second card",
         }
@@ -55,17 +57,29 @@ exports[`Board component snapshots with cards renders AddCard component and card
     className="sc-bZQynM kzxiXY"
   >
     <form
-      className="sc-bxivhb ctFYVZ"
+      className="sc-bxivhb gAAXBk"
       onSubmit={[Function]}
     >
       <input
         className="sc-ifAKCX cMqBtW"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Add a card..."
+        placeholder="Add a card"
         value=""
       />
     </form>
   </div>
+</div>
+`;
+
+exports[`Board component snapshots with no boardId renders no board info 1`] = `
+<div
+  className="sc-gzVnrw dhTLwt"
+>
+  <h1
+    className="sc-htoDjs bwZrJs"
+  >
+    No boards
+  </h1>
 </div>
 `;

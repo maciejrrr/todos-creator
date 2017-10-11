@@ -1,10 +1,19 @@
 import { createSelector } from 'reselect';
-
-export const cardIdSelector = (state, props) => props.card.id;
+import pickBy from 'lodash/pickBy';
 
 export const cardsStateSelector = state => state.cardsState;
 
-export const cardsSelector = createSelector(cardsStateSelector, cardsState => cardsState.cards);
+export const cardIdSelector = (state, props) => props.card.id;
+
+export const boardIdSelector = (state, props) => props.boardId;
+
+export const allCardsSelector = createSelector(cardsStateSelector, cardsState => cardsState.cards);
+
+export const cardsSelector = createSelector(
+  allCardsSelector,
+  boardIdSelector,
+  (allCards, boardId) => allCards.filter(card => card.boardId === boardId)
+);
 
 export const allTasksSelector = createSelector(cardsStateSelector, cardsState => cardsState.tasks);
 
@@ -13,16 +22,23 @@ export const allCardTaskIdsSelector = createSelector(
   cardsState => cardsState.cardTaskIds
 );
 
+export const tasksForCardsInBoardSelector = createSelector(
+  allCardTaskIdsSelector,
+  cardsSelector,
+  (allCardTaskIds, cards) => {
+    const cardsIds = cards.map(card => `${card.id}`);
+    return pickBy(allCardTaskIds, (value, key) => cardsIds.includes(`${key}`));
+  }
+);
+
 export const cardTaskIdsSelector = createSelector(
   allCardTaskIdsSelector,
   cardIdSelector,
-  (allCardTaskIds, cardId) => allCardTaskIds[cardId] || []
+  (boardCardTaskIds, cardId) => boardCardTaskIds[cardId] || []
 );
 
 export const cardTasksSelector = createSelector(
   allTasksSelector,
   cardTaskIdsSelector,
-  (allTasks, cardTaskIds) => {
-    return cardTaskIds.map(taskId => allTasks.find(task => task.id === taskId));
-  }
+  (allTasks, cardTaskIds) => cardTaskIds.map(taskId => allTasks.find(task => task.id === taskId))
 );

@@ -1,24 +1,32 @@
-import AddCard from '../index';
+import NewItemForm from '../index';
 
-describe('AddCard component', () => {
+describe('NewItemForm component', () => {
   let props;
   beforeEach(() => {
     props = {
-      addCard: jest.fn(),
+      submit: jest.fn(),
     };
   });
 
   describe('snapshots', () => {
     describe('initial state', () => {
       it('renders without focused components', () => {
-        const tree = renderer.create(<AddCard {...props} />).toJSON();
+        const tree = renderer.create(<NewItemForm {...props} />).toJSON();
         expect(tree).toMatchSnapshot();
       });
     });
 
     describe('focused state', () => {
       it('renders focused form', () => {
-        const component = renderer.create(<AddCard {...props} />);
+        const component = renderer.create(<NewItemForm {...props} />);
+        component.getInstance().handleFocus();
+        expect(component.toJSON()).toMatchSnapshot();
+      });
+    });
+
+    describe('inline form', () => {
+      it('renders inline form', () => {
+        const component = renderer.create(<NewItemForm {...props} inline />);
         component.getInstance().handleFocus();
         expect(component.toJSON()).toMatchSnapshot();
       });
@@ -35,7 +43,7 @@ describe('AddCard component', () => {
       preventDefaultMock = jest.fn();
       handleResetFormMock = jest.fn();
       blurMock = jest.fn();
-      const component = shallow(<AddCard {...props} />);
+      const component = shallow(<NewItemForm {...props} />);
       e = { preventDefault: preventDefaultMock };
       name = 'valid name';
       component.instance().handleResetForm = handleResetFormMock;
@@ -48,9 +56,9 @@ describe('AddCard component', () => {
       expect(preventDefaultMock).toHaveBeenCalledTimes(1);
     });
 
-    it('calls addCard', () => {
-      expect(props.addCard).toBeCalledWith({
-        card: {
+    it('calls submit', () => {
+      expect(props.submit).toBeCalledWith({
+        item: {
           id: 1,
           name,
         },
@@ -68,7 +76,7 @@ describe('AddCard component', () => {
 
   describe('handleChange', () => {
     it('changes name state', () => {
-      const component = shallow(<AddCard {...props} />);
+      const component = shallow(<NewItemForm {...props} />);
       const value = 'test value';
       const e = { target: { value } };
       component.instance().handleChange(e);
@@ -77,7 +85,7 @@ describe('AddCard component', () => {
 
   describe('handleFocus', () => {
     it('changes focused state', () => {
-      const component = shallow(<AddCard {...props} />);
+      const component = shallow(<NewItemForm {...props} />);
       component.instance().handleFocus();
       expect(component.state().focused).toBe(true);
     });
@@ -86,7 +94,7 @@ describe('AddCard component', () => {
   describe('handleResetForm', () => {
     let component;
     beforeEach(() => {
-      component = shallow(<AddCard {...props} />);
+      component = shallow(<NewItemForm {...props} />);
       component.setState({ focused: true, name: 'test name' });
       component.instance().handleResetForm();
     });
