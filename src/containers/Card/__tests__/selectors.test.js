@@ -1,4 +1,6 @@
 import {
+  cardsStateSelector,
+  cardsSelector,
   cardIdSelector,
   allTasksSelector,
   cardTasksSelector,
@@ -16,11 +18,23 @@ describe('Card selectors', () => {
     task1 = { id: 1, cardId, name: 'task' };
     task2 = { id: 2, cardId: 2, name: 'second task' };
     mockedState = {
-      boards: {
+      cardsState: {
         cards: [card1],
         tasks: [task1, task2],
       },
     };
+  });
+
+  describe('cardsStateSelector', () => {
+    it('returns cards reducer whole state', () => {
+      expect(cardsStateSelector(mockedState)).toEqual(mockedState.cardsState);
+    });
+  });
+
+  describe('cardsSelector', () => {
+    it('returns cards array', () => {
+      expect(cardsSelector(mockedState)).toEqual([card1]);
+    });
   });
 
   describe('cardId required in props', () => {

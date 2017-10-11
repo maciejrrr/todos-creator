@@ -4,12 +4,12 @@ import { routerMiddleware } from 'react-router-redux';
 import { routerReducer } from 'react-router-redux';
 
 import rootSaga from './sagas';
-import boardsReducer from '../containers/Board/reducer';
+import cardsReducer from '../containers/Card/reducer';
 
 const configureStore = history => {
   const reducers = combineReducers({
     router: routerReducer,
-    boards: boardsReducer,
+    cardsState: cardsReducer,
   });
 
   const sagaMiddleware = createSagaMiddleware();

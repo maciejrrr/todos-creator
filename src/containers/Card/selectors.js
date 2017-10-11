@@ -1,11 +1,17 @@
 import { createSelector } from 'reselect';
-import { boardStateSelector } from '../Board/selectors';
 
 export const cardIdSelector = (state, props) => props.card.id;
 
+export const cardsStateSelector = state => state.cardsState;
+
+export const cardsSelector = createSelector(
+  cardsStateSelector,
+  cardsState => cardsState.cards
+);
+
 export const allTasksSelector = createSelector(
-  boardStateSelector,
-  boardState => boardState.tasks
+  cardsStateSelector,
+  cardsState => cardsState.tasks
 );
 
 export const cardTasksSelector = createSelector(

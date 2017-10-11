@@ -1,5 +1,5 @@
 import { Board, mapDispatchToProps } from '../index';
-import { addCard } from '../actions';
+import { addCard } from '../../Card/actions';
 
 jest.mock('../../Card', () => 'Card');
 

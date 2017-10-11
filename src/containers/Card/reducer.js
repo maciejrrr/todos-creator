@@ -1,4 +1,4 @@
-import { ADD_CARD } from './constants';
+import { ADD_CARD, EDIT_CARD } from './constants';
 import { ADD_TASK } from '../Card/constants';
 
 const initialState = {
@@ -16,10 +16,22 @@ const setAddTaskState = (state, action) => ({
   tasks: [...state.tasks, action.task],
 });
 
-const boardsReducer = (state = initialState, action) => {
+const setEditCardState = (state, action) => ({
+  ...state,
+  cards: state.cards.map(card => {
+    if (card.id === action.cardId) {
+      return { ...card, name: action.name };
+    }
+    return card;
+  }),
+});
+
+const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CARD:
       return setAddCardState(state, action);
+    case EDIT_CARD:
+      return setEditCardState(state, action);
     case ADD_TASK:
       return setAddTaskState(state, action);
     default:
@@ -27,4 +39,4 @@ const boardsReducer = (state = initialState, action) => {
   }
 };
 
-export default boardsReducer;
+export default cardsReducer;

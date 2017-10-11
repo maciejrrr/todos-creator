@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import AddCard from '../../components/AddCard';
 import Card from '../Card';
-import { cardsSelector } from './selectors';
-import { addCard } from './actions';
+import { cardsSelector } from '../Card/selectors';
+import { addCard } from '../Card/actions';
 import { metrics } from '../../theme';
 
 const CardsContainer = styled.div`
