@@ -1,9 +1,9 @@
-import { addCard, editCard, addTask } from '../actions';
-import { ADD_CARD, EDIT_CARD, ADD_TASK } from '../constants';
+import { addCard, editCard, addTask, updateCardsTasks } from '../actions';
+import { ADD_CARD, EDIT_CARD, ADD_TASK, UPDATE_CARDS_TASKS } from '../constants';
 
 describe('Card actions', () => {
   describe('addCard', () => {
-    it('returns ADD_CARD type and text', () => {
+    it('returns ADD_CARD type and card object', () => {
       const card = { id: 1, name: 'test' };
       const expectedResult = {
         type: ADD_CARD,
@@ -14,7 +14,7 @@ describe('Card actions', () => {
   });
 
   describe('editCard', () => {
-    it('returns EDIT_CARD type and text', () => {
+    it('returns EDIT_CARD type, cardId and name', () => {
       const cardId = 1;
       const name = 'updated name';
       const expectedResult = {
@@ -27,13 +27,26 @@ describe('Card actions', () => {
   });
 
   describe('addTask', () => {
-    it('returns ADD_TASK type and text', () => {
-      const task = { id: 1, name: 'test', cardId: 1 };
+    it('returns ADD_TASK type, task object and cardId', () => {
+      const task = { id: 1, name: 'test' };
+      const cardId = 1;
       const expectedResult = {
         type: ADD_TASK,
         task,
+        cardId,
       };
-      expect(addTask({ task })).toEqual(expectedResult);
+      expect(addTask({ task, cardId })).toEqual(expectedResult);
+    });
+  });
+
+  describe('updateCardsTasks', () => {
+    it('returns UPDATE_CARDS_TASKS type, task object and cardId', () => {
+      const cardsTasks = { 1: [1, 2] };
+      const expectedResult = {
+        type: UPDATE_CARDS_TASKS,
+        cardsTasks,
+      };
+      expect(updateCardsTasks({ cardsTasks })).toEqual(expectedResult);
     });
   });
 });

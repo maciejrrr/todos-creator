@@ -52,8 +52,8 @@ describe('AddTask component', () => {
         task: {
           id: 1,
           name,
-          cardId: 1,
         },
+        cardId: 1,
       });
     });
 

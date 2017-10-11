@@ -40,23 +40,57 @@ exports[`Card component snapshots with tasks renders AddCard component and tasks
     >
       first card
     </a>
-    <div
-      className="sc-gzVnrw comcWq"
-    >
-      <p
-        className="sc-htoDjs kNRfwO"
+    <div>
+      <div
+        aria-grabbed={false}
+        className="sc-gzVnrw dbnHXy"
+        draggable={false}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+            "transform": null,
+            "transition": null,
+          }
+        }
+        tabIndex={0}
       >
-        first task
-      </p>
+        <p
+          className="sc-htoDjs kNRfwO"
+        >
+          first task
+        </p>
+      </div>
     </div>
-    <div
-      className="sc-gzVnrw comcWq"
-    >
-      <p
-        className="sc-htoDjs kNRfwO"
+    <div>
+      <div
+        aria-grabbed={false}
+        className="sc-gzVnrw dbnHXy"
+        draggable={false}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+            "transform": null,
+            "transition": null,
+          }
+        }
+        tabIndex={0}
       >
-        second task
-      </p>
+        <p
+          className="sc-htoDjs kNRfwO"
+        >
+          second task
+        </p>
+      </div>
     </div>
   </div>
   <div

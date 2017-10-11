@@ -46,11 +46,8 @@ class AddTask extends Component {
     e.preventDefault();
     const { addTask, cardId } = this.props;
     addTask({
-      task: {
-        id: uniqueId(),
-        name: this.state.name,
-        cardId,
-      },
+      task: { id: uniqueId(), name: this.state.name },
+      cardId,
     });
     this.setState({ name: '' });
     this.textarea.focus();

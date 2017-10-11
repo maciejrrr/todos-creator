@@ -1,4 +1,4 @@
-import { ADD_CARD, EDIT_CARD, ADD_TASK } from './constants';
+import { ADD_CARD, EDIT_CARD, ADD_TASK, UPDATE_CARDS_TASKS } from './constants';
 
 export const addCard = ({ card }) => ({
   type: ADD_CARD,
@@ -11,7 +11,13 @@ export const editCard = ({ cardId, name }) => ({
   name,
 });
 
-export const addTask = ({ task }) => ({
+export const addTask = ({ task, cardId }) => ({
   type: ADD_TASK,
   task,
+  cardId,
+});
+
+export const updateCardsTasks = ({ cardsTasks }) => ({
+  type: UPDATE_CARDS_TASKS,
+  cardsTasks,
 });

@@ -1,9 +1,9 @@
-import { ADD_CARD, EDIT_CARD } from './constants';
-import { ADD_TASK } from '../Card/constants';
+import { ADD_TASK, ADD_CARD, EDIT_CARD, UPDATE_CARDS_TASKS } from './constants';
 
 const initialState = {
   cards: [],
   tasks: [],
+  cardTaskIds: {},
 };
 
 const setAddCardState = (state, action) => ({
@@ -11,10 +11,18 @@ const setAddCardState = (state, action) => ({
   cards: [...state.cards, action.card],
 });
 
-const setAddTaskState = (state, action) => ({
-  ...state,
-  tasks: [...state.tasks, action.task],
-});
+const setAddTaskState = (state, action) => {
+  const { task, cardId } = action;
+  const cardTaskIds = state.cardTaskIds;
+  return {
+    ...state,
+    tasks: [...state.tasks, task],
+    cardTaskIds: {
+      ...cardTaskIds,
+      [cardId]: cardTaskIds[cardId] ? [...cardTaskIds[cardId], task.id] : [task.id],
+    },
+  };
+};
 
 const setEditCardState = (state, action) => ({
   ...state,
@@ -26,6 +34,11 @@ const setEditCardState = (state, action) => ({
   }),
 });
 
+const setUpdateCardTasksState = (state, action) => ({
+  ...state,
+  cardTaskIds: { ...state.cardTaskIds, ...action.cardsTasks },
+});
+
 const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CARD:
@@ -34,6 +47,8 @@ const cardsReducer = (state = initialState, action) => {
       return setEditCardState(state, action);
     case ADD_TASK:
       return setAddTaskState(state, action);
+    case UPDATE_CARDS_TASKS:
+      return setUpdateCardTasksState(state, action);
     default:
       return state;
   }

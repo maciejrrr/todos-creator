@@ -1,13 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Task component snapshots task with passed name 1`] = `
-<div
-  className="sc-bdVaJa kbaxZH"
->
-  <p
-    className="sc-bwzfXH dihBbR"
+<div>
+  <div
+    aria-grabbed={false}
+    className="sc-bdVaJa hlCdMR"
+    draggable={false}
+    onClick={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    style={
+      Object {
+        "pointerEvents": "auto",
+        "transform": null,
+        "transition": null,
+      }
+    }
+    tabIndex={0}
   >
-    test task
-  </p>
+    <p
+      className="sc-bwzfXH dihBbR"
+    >
+      test task
+    </p>
+  </div>
 </div>
 `;
