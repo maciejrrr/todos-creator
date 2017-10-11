@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCard component snapshots focused state renders focused form 1`] = `
+<form
+  className="sc-bxivhb umNtg"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-ifAKCX cRsMfw"
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Add a card..."
+    value=""
+  />
+  <div
+    className="sc-bdVaJa cItXoG"
+  >
+    <button
+      className="sc-bwzfXH hGZcQI"
+      disabled={true}
+    >
+      Add
+    </button>
+    <i
+      className="anticon anticon-close sc-htpNat oPmsX"
+      onClick={[Function]}
+    />
+  </div>
+</form>
+`;
+
+exports[`AddCard component snapshots initial state renders without focused components 1`] = `
+<form
+  className="sc-bxivhb ctFYVZ"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-ifAKCX cMqBtW"
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Add a card..."
+    value=""
+  />
+</form>
+`;

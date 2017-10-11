@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task component snapshots task with passed name 1`] = `
+<div
+  className="sc-bdVaJa kbaxZH"
+>
+  <p
+    className="sc-bwzfXH dihBbR"
+  >
+    test task
+  </p>
+</div>
+`;

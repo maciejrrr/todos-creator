@@ -9,3 +9,9 @@ global.React = React;
 global.renderer = renderer;
 global.shallow = shallow;
 global.mount = mount;
+
+jest.mock('lodash', () => ({
+  uniqueId() {
+    return 1;
+  },
+}));

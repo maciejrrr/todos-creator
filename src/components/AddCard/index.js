@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uniqueId from 'lodash/uniqueId';
+import { uniqueId } from 'lodash';
 import styled, { css } from 'styled-components';
 
 import FormActions from '../FormActions';

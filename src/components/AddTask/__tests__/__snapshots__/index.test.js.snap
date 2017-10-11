@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTask component snapshots initial state renders card footer with add task link 1`] = `
+<div
+  className="sc-bxivhb TDOcQ"
+>
+  <a
+    className="sc-EHOje iCMDbo"
+    onClick={[Function]}
+  >
+    Add a task...
+  </a>
+</div>
+`;
+
+exports[`AddTask component snapshots showForm state renders task form 1`] = `
+<form
+  className="sc-ifAKCX gYKwRG"
+  onSubmit={[Function]}
+>
+  <textarea
+    autoFocus={true}
+    className="sc-bZQynM kKJhsz"
+    onChange={[Function]}
+    value=""
+  />
+  <div
+    className="sc-bdVaJa cItXoG"
+  >
+    <button
+      className="sc-bwzfXH hGZcQI"
+      disabled={true}
+    >
+      Add
+    </button>
+    <i
+      className="anticon anticon-close sc-htpNat oPmsX"
+      onClick={[Function]}
+    />
+  </div>
+</form>
+`;

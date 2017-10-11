@@ -1,5 +1,5 @@
 import { Card, mapDispatchToProps } from '../index';
-import { addTask } from '../actions';
+import { addTask, editCard } from '../actions';
 
 describe('Card component', () => {
   let props;
@@ -36,16 +36,25 @@ describe('Card component', () => {
   describe('mapDispatchToprops', () => {
     let dispatch;
     let result;
-
     beforeEach(() => {
       dispatch = jest.fn();
       result = mapDispatchToProps(dispatch);
     });
+
     describe('addTask', () => {
       it('dispatches addTask with task object', () => {
         const task = { id: 1, cardId: 1, name: 'test' };
         result.addTask({ task });
         expect(dispatch).toBeCalledWith(addTask({ task }));
+      });
+    });
+
+    describe('editCard', () => {
+      it('dispatches editCard with task object', () => {
+        const id = 1;
+        const text = 'test text';
+        result.editCard({ id, text });
+        expect(dispatch).toBeCalledWith(editCard({ cardId: id, name: text }));
       });
     });
   });

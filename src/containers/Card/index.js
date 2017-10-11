@@ -5,8 +5,9 @@ import { createStructuredSelector } from 'reselect';
 
 import AddTask from '../../components/AddTask';
 import Task from '../../components/Task';
+import EditableField from '../../components/EditableField';
 import { cardTasksSelector } from './selectors';
-import { addTask } from './actions';
+import { addTask, editCard } from './actions';
 import { metrics, colors } from '../../theme';
 
 const StyledCard = styled.div`
@@ -19,24 +20,17 @@ const CardBody = styled.div`
   padding: ${metrics.smallMargin}px;
 `;
 
-const CardName = styled.p`
-  color: ${colors.darkGrayText};
-  font-size: ${metrics.fontSize.lg}px;
-  word-wrap: break-word;
-  margin-bottom: ${metrics.smallMargin}px;
-`;
-
 export class Card extends Component {
   renderTasks() {
     return this.props.tasks.map(task => <Task key={task.id} task={task} />);
   }
 
   render() {
-    const { addTask, card: { name, id } } = this.props;
+    const { addTask, card: { name, id }, editCard } = this.props;
     return (
       <StyledCard>
         <CardBody>
-          <CardName>{name}</CardName>
+          <EditableField name={name} fieldId={id} edit={editCard} />
           {this.renderTasks()}
         </CardBody>
         <AddTask addTask={addTask} cardId={id} />
@@ -51,6 +45,7 @@ const mapStateToProps = createStructuredSelector({
 
 export const mapDispatchToProps = dispatch => ({
   addTask: ({ task }) => dispatch(addTask({ task })),
+  editCard: ({ id, text }) => dispatch(editCard({ cardId: id, name: text })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

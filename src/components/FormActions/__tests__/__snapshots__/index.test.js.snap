@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormActions component snapshots renders form actions 1`] = `
+<div
+  className="sc-bdVaJa cItXoG"
+>
+  <button
+    className="sc-bwzfXH PLgtL"
+    disabled={false}
+  >
+    test
+  </button>
+  <i
+    className="anticon anticon-close sc-htpNat oPmsX"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`FormActions component snapshots renders form actions with disable submit button 1`] = `
+<div
+  className="sc-bdVaJa cItXoG"
+>
+  <button
+    className="sc-bwzfXH hGZcQI"
+    disabled={true}
+  >
+    test
+  </button>
+  <i
+    className="anticon anticon-close sc-htpNat oPmsX"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`FormActions component snapshots returns null 1`] = `null`;

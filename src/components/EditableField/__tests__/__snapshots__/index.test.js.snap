@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditableField component snapshots initial state renders field name 1`] = `
+<a
+  className="sc-bdVaJa eUzJrY"
+  onClick={[Function]}
+>
+  test field
+</a>
+`;
+
+exports[`EditableField component snapshots initial state renders field name 2`] = `
+<input
+  autoFocus={true}
+  className="sc-bwzfXH bHPLBP"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onKeyPress={[Function]}
+  value=""
+/>
+`;
