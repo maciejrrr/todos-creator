@@ -12,7 +12,7 @@ export default class Page {
     this.newTaskLink = Selector('a').withText('Add a task...');
     this.tastkTextarea = Selector('textarea.sc-htoDjs');
     this.submitTaskButton = Selector('button.sc-bwzfXH');
-    this.card = Selector('div.sc-jzJRlG');
+    this.card = Selector('div.sc-VigVT');
     this.task = Selector('div.sc-dnqmqq');
     this.select = Selector('.ant-select-selection__rendered');
 

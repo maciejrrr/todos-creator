@@ -12,7 +12,7 @@ test('creates page element', async t => {
   const tasksCount = page.task.count;
   await t
     .expect(cardsCount)
-    .eql(3)
+    .eql(2)
     .expect(tasksCount)
     .eql(4);
 });
