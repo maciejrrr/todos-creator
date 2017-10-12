@@ -64,7 +64,7 @@ exports[`BoardSelect component snapshots no boards renders select with default m
       className="sc-ifAKCX cMqBtW"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="Add a board"
+      placeholder="Add a board..."
       value=""
     />
   </form>
@@ -135,7 +135,7 @@ exports[`BoardSelect component snapshots selected board renders select with opti
       className="sc-ifAKCX cMqBtW"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="Add a board"
+      placeholder="Add a board..."
       value=""
     />
   </form>

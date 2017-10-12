@@ -106,7 +106,7 @@ export class Board extends Component {
           <CardsContainer>
             {this.renderCards()}
             <CardWrapper>
-              <NewItemForm submit={this.handleAddNewCard} placeholder="Add a card" />
+              <NewItemForm submit={this.handleAddNewCard} placeholder="Add a card..." />
             </CardWrapper>
           </CardsContainer>
         </DragDropContext>

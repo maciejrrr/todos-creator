@@ -23,7 +23,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom --watch",
-    "test:e2e": "testcafe chrome ./src/tests/e2e",
+    "test:cafe": "testcafe chrome ./tests",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

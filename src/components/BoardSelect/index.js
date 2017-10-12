@@ -32,7 +32,7 @@ const BoardSelect = ({ boardChange, boards, addBoard, value }) => {
           </Select.Option>
         ))}
       </StyledSelect>
-      <NewItemForm submit={addBoard} inline placeholder="Add a board" />
+      <NewItemForm submit={addBoard} inline placeholder="Add a board..." />
     </Container>
   );
 };

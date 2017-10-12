@@ -15,7 +15,7 @@ exports[`Board component snapshots no cards renders AddCard component without an
         className="sc-ifAKCX cMqBtW"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Add a card"
+        placeholder="Add a card..."
         value=""
       />
     </form>
@@ -64,7 +64,7 @@ exports[`Board component snapshots with cards renders AddCard component and card
         className="sc-ifAKCX cMqBtW"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Add a card"
+        placeholder="Add a card..."
         value=""
       />
     </form>
